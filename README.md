@@ -10,7 +10,7 @@
 ## Catkin workspace
 A catkin workspace is a directory (folder) in which you can create or modify existing catkin packages. The catkin structure simplifies the build and installation process for your [ROS](http://wiki.ros.org/catkin/Tutorials) packages.
 
-Type the following commands to clone the [repository](https://github.com/smart-methods/arduino_robot_arm ) inside the src folder which is in catkin_ws and add a package of arduino_robot_ar.
+Type the following commands to clone the [repository](https://github.com/smart-methods/arduino_robot_arm ) inside the src folder which is in catkin_ws and add a package of arduino_robot_arm.
 ```
  $ cd ~/catkin_ws/src
  $ sudo apt install git
@@ -28,29 +28,39 @@ $ sudo apt-get install ros-melodic-ros-controllers ros-melodic-ros-control
 
 ```
 ``
-NOTE: You might faced an error says "command not found" don't worries it just because you don't omit the $ in the beginning.
+NOTE: You might faced an error in the two last commands, don't worry there is a solution.
 ``
 
+You need to update 
+```
+$ sudo apt update
+```
+Then compile the package 
+```
+$ catkin_make
+```
 **Now the pakage is installed .**
 
 ## Run robot arm package by Rviz & Gazebo simulation
-- When run the following command RVIZ will open up and show the robot arm and you can control the it using the joint_state_publisher gui.
+- When run the following command RVIZ will open up and show the robot arm.
 ```
 $ roslaunch robot_arm_pkg check_motors.launch
 ```
 
 https://user-images.githubusercontent.com/74800962/125542688-90f6707b-a53a-46fb-95e0-55b16db7d452.mov
 
-- After run the following command Gazebo will open up and show the robot arm and you can control the it using the joint_state_publisher gui.
+- After run the following command Gazebo will open up and show the robot arm .
 ```
 $ roslaunch robot_arm_pkg check_motors_gazebo.launch
 ```
 
 https://user-images.githubusercontent.com/74800962/125542699-9a0f1c22-37ed-4dd3-af8e-8f240b9c7e01.mov
 
+
 ## Control RViz and gazebo at the same time 
 As normal when running RViz and gazebo at the same time, change motors angles on RViz doesn't change on gazebo, so I need to connect them. 
-Before running the commands to connect them ,you need to give it execution permissions
+
+Before running the command -to connect them- ,you need to give it execution permissions
 ```
 $ cd catkin_ws/src/arduino_robot_arm/robot_arm_pkg/scripts
 $ sudo chmod +x joint_states_to_gazebo.py
